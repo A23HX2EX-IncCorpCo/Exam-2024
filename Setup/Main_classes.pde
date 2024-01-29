@@ -1,6 +1,6 @@
 //Her definere vi de overordnede klasser som Apps
-appSuperclass app;
+AppSuperclass appSuperclass;
 
-class appSuperclass{
+class AppSuperclass{
   
 }

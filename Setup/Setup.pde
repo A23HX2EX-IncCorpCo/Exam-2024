@@ -18,10 +18,11 @@ danne en forståelse og har ikke copy pasted.
 ------------------------------------------*/
 void setup(){
   size(960,540);
-  app = new appSuperclass();
-  main = new Desktop();
+  appSuperclass = new AppSuperclass();
+  desktop = new Desktop();
+  login = new Login();
 }
 
 void draw(){
-
+  Login.startup();
 }
