@@ -16,7 +16,10 @@ danne en forståelse og har ikke copy pasted.
 - CodingTrain discord server
 
 ------------------------------------------*/
+String state;
+
 void setup(){
+  state = "startup";
   size(960,540);
   appSuperclass = new AppSuperclass();
   desktop = new Desktop();
@@ -24,5 +27,13 @@ void setup(){
 }
 
 void draw(){
-  Login.startup();
+  switch(state){
+  case "startup":
+    login.startup();
+    break;
+  case "loginPage":
+    login.loginPage();
+    break;
+  }
+  
 }
