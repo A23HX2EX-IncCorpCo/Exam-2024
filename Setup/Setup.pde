@@ -26,6 +26,7 @@ void setup() {
   desktop = new Desktop();
   login = new Login();
   clock = new Clock();
+  calendar = new Calendar();
 }
 
 void draw() {
