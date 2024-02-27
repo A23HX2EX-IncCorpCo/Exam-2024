@@ -25,6 +25,7 @@ void setup() {
   appSuperclass = new AppSuperclass();
   desktop = new Desktop();
   login = new Login();
+  clock = new Clock();
 }
 
 void draw() {
