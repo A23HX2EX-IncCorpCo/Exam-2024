@@ -30,13 +30,14 @@ void setup() {
 }
 
 void draw() {
+  
   switch(state) {
     // states for login
   case "startup":
-    login.startup();
+    //loginPage.
     break;
   case "loginPage":
-    login.loginPage();
+    //loginPage.
     break;
   }
 }
