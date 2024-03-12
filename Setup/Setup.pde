@@ -24,7 +24,7 @@ void setup() {
   size(1600, 900);
   appSuperclass = new AppSuperclass();
   desktop = new Desktop();
-  login = new Login();
+  loginPage = new LoginPage();
   clock = new Clock();
   calendar = new Calendar();
 }
@@ -34,9 +34,10 @@ void draw() {
   switch(state) {
     // states for login
   case "startup":
-    //loginPage.
+    loginPage.();
+    
     break;
-  case "loginPage":
+  case "Desktop":
     //loginPage.
     break;
   }
