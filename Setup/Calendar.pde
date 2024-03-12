@@ -1,4 +1,0 @@
-Calendar calendar;
-
-class Calendar{
-}
