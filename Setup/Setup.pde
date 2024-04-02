@@ -23,20 +23,21 @@ void setup() {
   size(960, 540);
   size(1600, 900);
   appSuperclass = new AppSuperclass();
-  desktop = new Desktop();
-  login = new Login();
+  loginPage = new LoginPage();
   clock = new Clock();
   calendar = new Calendar();
 }
 
 void draw() {
+  
   switch(state) {
     // states for login
   case "startup":
-    login.startup();
+    loginPage.Wallpaper();
+    
     break;
-  case "loginPage":
-    login.loginPage();
+  case "Desktop":
+    //loginPage.
     break;
   }
 }
