@@ -1,4 +1,2 @@
-Calendar calendar;
-
 class Calendar{
 }

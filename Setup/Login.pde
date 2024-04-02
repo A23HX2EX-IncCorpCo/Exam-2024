@@ -1,20 +1,20 @@
-
-LoginPage loginPage;
-
-class LoginPage {
+class LoginPage{
   PImage loginWallpaper;
+  boolean startup;
 
   LoginPage() {
+    Wallpaper();
   }
+
 
   void Wallpaper() {
     loginWallpaper = loadImage("loginWallpaper.png");
     loginWallpaper.resize(width, height);
     background(loginWallpaper);
+
   }
-  
-  void ProfileDisplay(){
-  
-  
+
+  void ProfileDisplay() {
+    background(50);
   }
 }

@@ -1,11 +1,10 @@
-Clock clock;
-
 class Clock {
   int minute;
   int hour;
 
   Clock() {
   }
+
   void clockWork(int size, float x, float y) {
     minute = minute();
     hour = hour();
@@ -18,5 +17,13 @@ class Clock {
     } else {
       text(hour + ":" + minute, x, y);
     }
+  }
+
+  void clockFade(){
+    transform: translateY(0);
+transition-property: transform;
+transition-duration: 1s;
+transition-timing-function: ease-out;
+
   }
 }
