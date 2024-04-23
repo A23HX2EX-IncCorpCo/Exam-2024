@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+
+=======
 Clock clock;
 Calendar calendar;
+>>>>>>> 81e25045e332425c850ecfc9df18a858a35dec83
 class Clock {
   int minute;
   int hour;

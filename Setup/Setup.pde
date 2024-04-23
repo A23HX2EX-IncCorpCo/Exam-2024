@@ -18,24 +18,34 @@
  ------------------------------------------*/
 String state;
 Calendar calendar;
-AppSuperClass appSuperclass;
+//AppSuperClass appSuperclass;
 LoginPage loginPage;
 Clock clock;
+Grid appGrid;
+Desktop desktop;
+Buttons buttons;
+
+boolean[] keys = new boolean[1000000000];
+boolean typing = true;
+String typedLetters = "";
 
 void setup() {
   state = "startup";
   size(960, 540);
   size(1600, 900);
-  appSuperclass = new AppSuperclass();
+  
+  //appSuperclass = new AppSuperclass();
+  appGrid = new Grid();
   loginPage = new LoginPage();
   clock = new Clock();
   calendar = new Calendar();
 }
 
 void draw() {
+  
+  println(typedLetters);
 
   switch(state) {
-    // states for login
   case "startup":
     loginPage.Wallpaper();
     break;
@@ -43,7 +53,6 @@ void draw() {
     loginPage.ProfileDisplay();
     break;
   case "Desktop":
-    //loginPage.
     break;
   }
 }
