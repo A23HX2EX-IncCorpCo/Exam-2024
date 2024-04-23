@@ -9,14 +9,18 @@
  Vi har brugt følgende ressourcer til at
  hjælpe med opgaven, vi har brugt det til at
  danne en forståelse og har ikke copy pasted.
- 
+
  - Phind
  - Stackoverflow
  - Processing.org
  - CodingTrain discord server
- 
+
  ------------------------------------------*/
 String state;
+Calendar calendar;
+AppSuperClass appSuperclass;
+LoginPage loginPage;
+Clock clock;
 
 void setup() {
   state = "startup";
@@ -29,12 +33,14 @@ void setup() {
 }
 
 void draw() {
-  
+
   switch(state) {
     // states for login
   case "startup":
     loginPage.Wallpaper();
-    
+    break;
+  case "login":
+    loginPage.ProfileDisplay();
     break;
   case "Desktop":
     //loginPage.
