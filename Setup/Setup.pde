@@ -13,7 +13,7 @@
  - Phind
  - Stackoverflow
  - Processing.org
- - CodingTrain discord server
+ - CodingTrain
 
  ------------------------------------------*/
 String state;

@@ -12,6 +12,9 @@ void keyPressed() {
       typedLetters = typedLetters.substring(0, typedLetters.length() -1);
     }
   }
+  if (typing != true){
+    typedLetters = "";
+  }
 }
 
 void keyReleased() {

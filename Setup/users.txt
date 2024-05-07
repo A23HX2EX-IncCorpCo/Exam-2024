@@ -1,0 +1,1 @@
+JohnDoe: profilePicture.jpg: password123: gridLayout: darkTheme
