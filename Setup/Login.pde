@@ -25,3 +25,11 @@ class LoginPage {
     text(typedLetters, width/2-width/4.1, height/1.85);
   }
 }
+login(String username, String password) {
+    if (authenticate(username, password)) {
+        Desktop desktop = new Desktop(); // Instantiate Desktop class
+        desktop.display(); // Call a method from Desktop class
+    } else {
+        System.out.println("Invalid username or password.");
+    }
+}

@@ -42,3 +42,28 @@ import java.util.Scanner;
             System.out.println("Error loading accounts: " + e.getMessage());
         }
     }
+
+boolean authenticate(String username, String password) {
+    try {
+        File folder = new File("data");
+        File[] listOfFiles = folder.listFiles();
+        if (listOfFiles!= null) {
+            for (File file : listOfFiles) {
+                if (file.isFile()) {
+                    Scanner scanner = new Scanner(file);
+                    String storedUsername = scanner.nextLine().split(":")[1];
+                    String storedPassword = scanner.nextLine().split(":")[1];
+                    scanner.close();
+                    if (storedUsername.equals(username) && storedPassword.equals(password)) {
+                        return true; // Credentials match
+                    }
+                }
+            }
+        }
+    } catch (IOException e) {
+        System.out.println("File not found: " + e.getMessage());
+    } catch (Exception e) {
+        System.out.println("An unexpected error occurred: " + e.getMessage());
+    }
+    return false; // Credentials do not match
+}
