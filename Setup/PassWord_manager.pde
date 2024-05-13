@@ -1,83 +1,44 @@
-import controlP5.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
-ControlP5 cp5;
-Textfield usernameField;
-Textfield passwordField;
-Button createAccountButton;
-Button loginButton;
+ class PasswordManager {
+        // Example usage
+        // saveAccount("testUser", "testPass");
+        // loadAccounts();
+    }
 
-void setup() {
- size(600, 400);
- cp5 = new ControlP5(this);
-  
- // Create text fields for username and password
- usernameField = cp5.addTextfield("Username")
-                     .setPosition(width/3,height/5)
-                     .setSize(200, 40)
-                     .setFont(createFont("Arial", 14))
-                     .setFocus(true)
-                     .setColor(color(255, 255, 255))
-                     .setColorBackground(color(0, 0, 0))
-                     .setColorForeground(color(255, 255, 255))
-                     .setColorActive(color(255, 255, 255))
-                     .setColorLabel(color(255, 255, 255))
-                     .setColorCursor(color(255, 255, 255))
-                     .setColorValueLabel(color(255, 255, 255));
-  
- passwordField = cp5.addTextfield("Password")
-                     .setPosition(width/3, height/2.75)
-                     .setSize(200, 40)
-                     .setFont(createFont("Arial", 14))
-                     .setFocus(true)
-                     .setColor(color(255, 255, 255))
-                     .setColorBackground(color(0, 0, 0))
-                     .setColorForeground(color(255, 255, 255))
-                     .setColorActive(color(255, 255, 255))
-                     .setColorLabel(color(255, 255, 255))
-                     .setColorCursor(color(255, 255, 255))
-                     .setColorValueLabel(color(255, 255, 255));
-  
- // Create buttons for account creation and login
- createAccountButton = cp5.addButton("Create Account")
-                           .setPosition(width/3, height/1.825)
-                           .setSize(100, 40);
-  
- loginButton = cp5.addButton("Login")
-                   .setPosition(width/2, height/1.825)
-                   .setSize(100, 40);
-}
+      void saveAccount(String username, String password) {
+        try {
+            File file = new File("data/" + username + ".txt");
+            FileWriter writer = new FileWriter(file);
+            writer.write("username:" + username);
+            writer.write("\npassword:" + password);
+            writer.close();
+            System.out.println("Account saved successfully.");
+        } catch (IOException e) {
+            System.out.println("Error saving account: " + e.getMessage());
+        }
+    }
 
-void draw() {
- background(0);
-}
-
-// Event handler for the "Create Account" button
-void controlEvent(ControlEvent theEvent) {
- if (theEvent.getController().getName().equals("Create Account")) {
-    String username = usernameField.getText();
-    String password = passwordField.getText();
-    // Save the new account to a file using PrintWriter
-    saveAccount(username, password);
- } else if (theEvent.getController().getName().equals("Login")) {
-    // Implement login logic here
- }
-}
-
-// Function to save an account to a file using PrintWriter
-void saveAccount(String username, String password) {
- try {
-    // Create a PrintWriter object
-    PrintWriter output = createWriter("data/" + username + ".txt");
-    
-    // Write the username and password to the file
-    output.println("username:"+username);
-    output.println("password:"+password);
-    
-    // Always close the PrintWriter to ensure the data is saved and resources are freed
-    output.flush();
-    output.close();
- } 
- catch (Exception e) {
-    println("Error saving account: " + e);
- }
-}
+      void loadAccounts() {
+        try {
+            File folder = new File("data");
+            File[] listOfFiles = folder.listFiles();
+            if (listOfFiles!= null) {
+                for (File file : listOfFiles) {
+                    if (file.isFile()) {
+                        Scanner scanner = new Scanner(file);
+                        while (scanner.hasNextLine()) {
+                            String line = scanner.nextLine();
+                            System.out.println(line);
+                        }
+                        scanner.close();
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error loading accounts: " + e.getMessage());
+        }
+    }
