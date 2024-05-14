@@ -26,37 +26,20 @@ class LoginPage extends PApplet {
 
   void Wallpaper() {
     loginWallpaper = loadImage("loginWallpaper.png");
-
-@@ -14,16 +32,23 @@ class LoginPage {
+    loginWallpaper.resize(width, height);
+    background(loginWallpaper);
+  }
 
   void ProfileDisplay() {
     background(50);
-<<<<<<< HEAD
-
     fill(255);
     rectMode(CENTER);
     rect(width/2, height/2, width/2, width/12, 20);
-
-=======
-    fill(255);
-    rectMode(CENTER);
-    rect(width/2, height/2, width/2, width/12, 20);
->>>>>>> 6ba7bc8fd3ee954599f651305bc73e35f825805b
     fill(0);
     textSize(width/13);
     textAlign(LEFT);
     text(typedLetters, width/2-width/4.1, height/1.85);
   }
-<<<<<<< HEAD
-  void login(String username, String password) {
-    if (authenticate(username, password)) {
-      Desktop desktop = new Desktop(); 
-
-@@ -32,4 +57,49 @@ class LoginPage {
-      System.out.println("Invalid username or password.");
-    }
-  }
-=======
 
   void displayButtons() {
     if (!hasAccounts) {
@@ -100,4 +83,4 @@ class LoginPage extends PApplet {
       JOptionPane.showMessageDialog(null, "Invalid username or password.", "Error", JOptionPane.ERROR_MESSAGE);
     }
   }
->>>>>>> 6ba7bc8fd3ee954599f651305bc73e35f825805b
+}
