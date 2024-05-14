@@ -33,6 +33,7 @@ void setup() {
   state = "startup";
   size(960, 540);
   size(1600, 900);
+  size(1920, 1080);
   
   //appSuperclass = new AppSuperclass();
   appGrid = new Grid();

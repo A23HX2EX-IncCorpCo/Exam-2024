@@ -14,22 +14,22 @@ class LoginPage {
 
   void ProfileDisplay() {
     background(50);
-    
+
     fill(255);
     rectMode(CENTER);
     rect(width/2, height/2, width/2, width/12, 20);
-    
+
     fill(0);
     textSize(width/13);
     textAlign(LEFT);
     text(typedLetters, width/2-width/4.1, height/1.85);
   }
-}
-login(String username, String password) {
+  void login(String username, String password) {
     if (authenticate(username, password)) {
-        Desktop desktop = new Desktop(); // Instantiate Desktop class
-        desktop.display(); // Call a method from Desktop class
+      Desktop desktop = new Desktop(); 
+      desktop.display(); 
     } else {
-        System.out.println("Invalid username or password.");
+      System.out.println("Invalid username or password.");
     }
+  }
 }
