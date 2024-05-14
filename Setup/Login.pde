@@ -1,27 +1,87 @@
 import processing.core.PApplet;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import controlP5.*;
 
-class LoginPage extends PApplet {
+class LoginPage {
   PImage loginWallpaper;
   boolean startup;
   String typedLetters = "";
   boolean hasAccounts = false; // Flag to check if there are any accounts
+  ControlP5 cp5;
+  Textfield usernameField;
+  Textfield passwordField;
+  Button createAccountButton;
+  Button loginButton;
 
   LoginPage() {
     size(1920, 1080); // Set the screen resolution to 1080p
-    setup();
   }
-
   void setup() {
     Wallpaper();
     loadAccounts(); // Load accounts on startup
+
+    // Initialize ControlP5
+    ControlP5 = new ControlP5(this);
+    // Create text fields for username and password
+    usernameField = cp5.addTextfield("Username")
+      .setPosition(width/3, height/5)
+      .setSize(200, 40)
+      .setFont(createFont("Arial", 14))
+      .setFocus(true)
+      .setColor(color(255, 255, 255))
+      .setColorBackground(color(0, 0, 0))
+      .setColorForeground(color(255, 255, 255))
+      .setColorActive(color(255, 255, 255))
+      .setColorLabel(color(255, 255, 255))
+      .setColorCursor(color(255, 255, 255))
+      .setColorValueLabel(color(255, 255, 255));
+
+    passwordField = cp5.addTextfield("Password")
+      .setPosition(width/3, height/2.75)
+      .setSize(200, 40)
+      .setFont(createFont("Arial", 14))
+      .setFocus(true)
+      .setColor(color(255, 255, 255))
+      .setColorBackground(color(0, 0, 0))
+      .setColorForeground(color(255, 255, 255))
+      .setColorActive(color(255, 255, 255))
+      .setColorLabel(color(255, 255, 255))
+      .setColorCursor(color(255, 255, 255))
+      .setColorValueLabel(color(255, 255, 255));
+
+    // Create buttons for account creation and login
+    createAccountButton = cp5.addButton("Create Account")
+      .setPosition(width/3, height/1.825)
+      .setSize(100, 40);
+
+    loginButton = cp5.addButton("Login")
+      .setPosition(width/2, height/1.825)
+      .setSize(100, 40);
   }
 
   void draw() {
     background(loginWallpaper);
     ProfileDisplay();
     displayButtons();
+  }
+
+  // Event handler for the "Create Account" button
+  void controlEvent(ControlEvent theEvent) {
+    if (theEvent.getController().getName().equals("Create Account")) {
+      String username = usernameField.getText();
+      String password = passwordField.getText();
+      // Save the new account to a file
+      saveAccount(username, password);
+    } else if (theEvent.getController().getName().equals("Login")) {
+      // Implement login logic here
+    }
+  }
+
+  // Function to save an account to a file
+  void saveAccount(String username, String password) {
+    String[] accountData = {username, password};
+    saveStrings("data/accounts.txt", accountData);
   }
 
   void Wallpaper() {
