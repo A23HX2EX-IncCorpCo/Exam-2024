@@ -13,9 +13,9 @@
  - Phind
  - Stackoverflow
  - Processing.org
- - CodingTrain
- 
- ------------------------------------------*/
+  - CodingTrain 
+
+
 String state;
 Calendar calendar;
 //AppSuperClass appSuperclass;
