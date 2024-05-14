@@ -33,8 +33,7 @@ void setup() {
   state = "startup";
   size(960, 540);
   size(1600, 900);
-  size(1920, 1080);
-  
+
   //appSuperclass = new AppSuperclass();
   appGrid = new Grid();
   loginPage = new LoginPage();
@@ -43,12 +42,11 @@ void setup() {
 }
 
 void draw() {
-  
   println(typedLetters);
 
   switch(state) {
   case "startup":
-    loginPage.Wallpaper();
+    loginPage.loginWallpaper(); // Now this function exists and can be called
     break;
   case "login":
     loginPage.ProfileDisplay();
