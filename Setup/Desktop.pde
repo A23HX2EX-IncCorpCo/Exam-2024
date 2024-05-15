@@ -3,7 +3,7 @@ class Desktop{
   Desktop(){
   }
   
-  void display(){
+  void showDesktop(){
   background(100, 100, 100);
   
   }

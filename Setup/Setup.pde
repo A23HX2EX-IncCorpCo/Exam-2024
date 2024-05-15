@@ -33,6 +33,7 @@ Buttons buttons;
 
 boolean[] keys = new boolean[1000000000];
 boolean typing = true;
+String loginMessage = "";
 String typedLetters = "";
 ArrayList<String> profiles = new ArrayList<>(); // Global or accessible variable
 PImage loginWallpaper;
@@ -52,6 +53,11 @@ void setup() {
   clock = new Clock();
   calendar = new Calendar();
 }
+void showDesktop() {
+    background(255); // Set a plain background or load a desktop wallpaper
+    text("Welcome to your Desktop", width / 2, height / 2);
+    // Add more desktop-specific UI elements and functionality here
+}
 
 void draw() {
   println(typedLetters);
@@ -62,13 +68,20 @@ void draw() {
   switch(state) {
   case "startup":
     loginPage.loginWallpaper(); // Now this function exists and can be called
-    break;
-  case "login":
-    displayBackground(); // Ensure the wallpaper is still displayed
-    displayProfiles(profiles); // Display the list of profiles
-    loginPage.setupUI();
-    break;
-  case "Desktop":
-    break;
-  }
+            println("Welcome to the application! Please log in.");
+            break;
+        case "login":
+            displayBackground();
+            displayProfiles(profiles);
+            loginPage.setupUI();
+            // Display the status message on the screen
+            fill(0); // Set text color to black (or any other color)
+            textSize(24); // Set text size
+            textAlign(CENTER, CENTER); // Center align the text
+            text(loginMessage, width / 2, height / 2 + 150); // Display message below login button
+            break;
+        case "Desktop":
+            showDesktop(); // Function to render the desktop view
+            break;
+    }
 }

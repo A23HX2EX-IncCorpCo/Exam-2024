@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.io.FileReader;
 
 class LoginPage {
   PImage loginWallpaper;
@@ -20,6 +21,7 @@ Textfield passwordField;
   Button createUsersButton;
   Button loginButton;
   PApplet parent;
+  String loginMessage = "";
   ArrayList<String[]> Users = new ArrayList<>(); // Define the static list
   LoginPage(PApplet parent) {
 
@@ -51,7 +53,7 @@ Textfield passwordField;
     if (cp5.getController("Password") == null) {
       passwordField = cp5.addTextfield("Password")
         .setId(2)
-        .setPosition((parent.width - 200) / 2, parent.height / 2 - 50) // 30 pixels down from username field
+        .setPosition((parent.width - 200) / 2, parent.height / 2 - 50) // 30 pixels down from Username field
         .setSize(200, 40)
         .setFont(parent.createFont("Arial", 20))
         .setAutoClear(false)
@@ -62,14 +64,29 @@ Textfield passwordField;
         .setVisible(true);
     }
     if (cp5.getController("Login") == null) {
-      loginButton = cp5.addButton("Login")
-        .setPosition((parent.width - 400) / 2, parent.height / 2 + 35) // Below the password field
-        .setSize(200, 40)
-        .setValue(0)
-        .setFont(parent.createFont("Arial", 20))
-        .setVisible(true);
+ loginButton = cp5.addButton("Login")
+    .setPosition((parent.width - 200) / 2, parent.height / 2 + 85)
+    .setSize(200, 40)
+    .setValue(0)
+    .setFont(parent.createFont("Arial", 20))
+    .setVisible(true)
+    .onClick(new CallbackListener() {
+        public void controlEvent(CallbackEvent event) {
+            String username = UsernameField.getText();
+            String password = passwordField.getText();
+            if (verifyLogin(username, password)) {
+                println("Login successful!"); // Print once per login attempt
+                loginMessage = "Login successful!";
+                state = "Desktop"; // Change the application state
+            } else {
+                println("Invalid username or password."); // Print once per failure
+               loginMessage = "Invalid username or password.";
+            }
+        }
+    });
     }
    
+    if (cp5.getController("Create New User") == null) {
      createUsersButton = cp5.addButton("Create New User")
     .setPosition((parent.width - 400) / 2 + 210, parent.height / 2 + 35)
     .setSize(200, 40)
@@ -84,6 +101,25 @@ Textfield passwordField;
 
     }
   }
+}
+boolean verifyLogin(String username, String password) {
+    String filename = "users.txt";
+    try {
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(",");
+            if (parts[0].equals(username) && parts[1].equals(password)) {
+                reader.close();
+                return true; // Credentials match
+            }
+        }
+        reader.close();
+    } catch   (IOException e) {
+        println("Error reading users file: " + e);
+    }
+    return false; // No match found
+}
 
 void createUser() {
     String Username = UsernameField.getText();
@@ -91,14 +127,14 @@ void createUser() {
     saveUser(Username, password);
     println("New user created: " + Username); // Debug output
 }
-void saveUser(String username, String password) {
+void saveUser(String Username, String password) {
     String filename = "users.txt";
     PrintWriter output;
     try {
         output = new PrintWriter(new BufferedWriter(new FileWriter(filename, true))); // 'true' for append mode
-        output.println(username + "," + password);
+        output.println(Username + "," + password);
         output.close();
-        println("User saved: " + username); // Debug output
+        println("User saved: " + Username); // Debug output
     } catch (IOException e) {
         println("Error writing to file: " + e.getMessage());
     }
