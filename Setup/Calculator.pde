@@ -6,12 +6,17 @@ class Calculator {
   char math= ' ';
   String Answer;
   float result;
+boolean closed;
 
   Calculator() {
   }
 
 
   void calc1(float x, float y) {
+    if (closed){
+    x=-10000;
+    }
+    
     if (!second) {
       secondIn=0;
     }
@@ -30,8 +35,13 @@ class Calculator {
     square(x+1, y+400, 100);
     square(x+100, y+400, 100);
     square(x+200, y+400, 100);
-
+    square(x+1, y+500, 100);
     rect(x, y-100, 300, 100);
+    
+    fill(255, 0, 0);
+    square(x+100, y+500, 100);
+
+
     fill(0);
 
     text("1", x+50, y+50);
@@ -49,6 +59,8 @@ class Calculator {
     text("*", x+50, y+450);
     text("/", x+150, y+450);
     text("^", x+250, y+450);
+    text("x", x+50, y+550);
+    text("x", x+150, y+550);
 
     if (mousePressed && (mouseX < x+100) && (mouseX > x+1)&& (mouseY < y+100)&& (mouseY > y+1)) {
       buttonValue='1';
@@ -99,6 +111,12 @@ class Calculator {
     if (mousePressed && (mouseX < x+300) && (mouseX > x+200)&& (mouseY < y+500)&& (mouseY > y+400)) {
       math='^';
       second=true;
+    }
+      if (mousePressed && (mouseX < x+100) && (mouseX > x+1)&& (mouseY < y+600)&& (mouseY > y+500)) {
+      second=false;
+      }
+      if (mousePressed && (mouseX < x+200) && (mouseX > x+100)&& (mouseY < y+600)&& (mouseY > y+500)) {
+      closed=true;
     }
     if (second) {
       secondIn=buttonValue-48;
