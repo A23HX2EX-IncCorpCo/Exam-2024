@@ -69,7 +69,7 @@ Textfield passwordField;
         .setFont(parent.createFont("Arial", 20))
         .setVisible(true);
     }
-    if (cp5.getController("Create New User") == null) {
+   
      createUsersButton = cp5.addButton("Create New User")
     .setPosition((parent.width - 400) / 2 + 210, parent.height / 2 + 35)
     .setSize(200, 40)
@@ -84,7 +84,7 @@ Textfield passwordField;
 
     }
   }
-}
+
 void createUser() {
     String Username = UsernameField.getText();
     String password = passwordField.getText();
