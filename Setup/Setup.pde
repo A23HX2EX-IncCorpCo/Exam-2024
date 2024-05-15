@@ -58,6 +58,7 @@ void draw() {
   background(loginWallpaper);
   ProfileDisplay();
   displayButtons();
+  Calc.caculuator();
 
   switch(state) {
   case "startup":
