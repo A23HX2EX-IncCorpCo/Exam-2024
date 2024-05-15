@@ -1,21 +1,22 @@
 
 void keyPressed() {
-  keys[key] = true;
 
-  if (state == "startup") {
-    state = "login";
-  }
-  if (typing == true) {
-    if (key != 8) {
-      typedLetters += str(key);
-    } else if (key == 8 & typedLetters.length() >= 1) {
-      typedLetters = typedLetters.substring(0, typedLetters.length() -1);
+    keys[key] = true;
+
+    if (state == "startup") {
+      state = "login";
+    }
+    if (typing == true) {
+      if (key != 8) {
+        typedLetters += str(key);
+      } else if (key == 8 & typedLetters.length() >= 1) {
+        typedLetters = typedLetters.substring(0, typedLetters.length() -1);
+      }
+    }
+    if (typing != true) {
+      typedLetters = "";
     }
   }
-  if (typing != true){
-    typedLetters = "";
-  }
-}
 
 void keyReleased() {
   keys[key] = false;

@@ -4,25 +4,25 @@ import java.io.IOException;
 import java.util.Scanner;
 
 class PasswordManager {
-  boolean hasAccounts() {
+  boolean hasUsers() {
     File folder = new File("data");
     File[] listOfFiles = folder.listFiles();
     return listOfFiles!= null && listOfFiles.length > 0;
   }
 
-  void saveAccount(String username, String password) {
+  void saveUsers(String Username, String password) {
     try {
-      File file = new File("data/" + username + ".txt");
+      File file = new File("data/" + Username + ".txt");
       FileWriter writer = new FileWriter(file);
-      writer.write("username:" + username);
+      writer.write("Username:" + Username);
       writer.write("\npassword:" + password);
       writer.close();
-      System.out.println("Account saved successfully.");
+      System.out.println("Users saved successfully.");
     } catch (IOException e) {
-      System.out.println("Error saving account: " + e.getMessage());
+      System.out.println("Error saving Users: " + e.getMessage());
     }
   }
-  void loadAccounts() {
+  void loadUsers() {
     try {
       File folder = new File("data");
       File[] listOfFiles = folder.listFiles();
@@ -39,11 +39,11 @@ class PasswordManager {
         }
       }
     } catch (IOException e) {
-      System.out.println("Error loading accounts: " + e.getMessage());
+      System.out.println("Error loading Users: " + e.getMessage());
     }
   }
 
-  boolean authenticate(String username, String password) {
+  boolean authenticate(String Username, String password) {
     try {
       File folder = new File("data");
       File[] listOfFiles = folder.listFiles();
@@ -54,7 +54,7 @@ class PasswordManager {
             String storedUsername = scanner.nextLine().split(":")[1];
             String storedPassword = scanner.nextLine().split(":")[1];
             scanner.close();
-            if (storedUsername.equals(username) && storedPassword.equals(password)) {
+            if (storedUsername.equals(Username) && storedPassword.equals(password)) {
               return true; // Credentials match
             }
           }
