@@ -9,13 +9,13 @@
  Vi har brugt følgende ressourcer til at
  hjælpe med opgaven, vi har brugt det til at
  danne en forståelse og har ikke copy pasted.
-
+ 
  - Phind
  - Stackoverflow
  - Processing.org
- - CodingTrain 
+  - CodingTrain 
 
- ------------------------------------------*/
+
 String state;
 Calendar calendar;
 //AppSuperClass appSuperclass;
@@ -33,7 +33,7 @@ void setup() {
   state = "startup";
   size(960, 540);
   size(1600, 900);
-  
+
   //appSuperclass = new AppSuperclass();
   appGrid = new Grid();
   loginPage = new LoginPage();
@@ -42,12 +42,11 @@ void setup() {
 }
 
 void draw() {
-  
   println(typedLetters);
 
   switch(state) {
   case "startup":
-    loginPage.Wallpaper();
+    loginPage.loginWallpaper(); // Now this function exists and can be called
     break;
   case "login":
     loginPage.ProfileDisplay();

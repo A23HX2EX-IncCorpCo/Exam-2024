@@ -22,7 +22,6 @@ class PasswordManager {
       System.out.println("Error saving account: " + e.getMessage());
     }
   }
-
   void loadAccounts() {
     try {
       File folder = new File("data");
