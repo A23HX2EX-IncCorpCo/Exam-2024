@@ -30,7 +30,7 @@ Buttons buttons;
   Textfield passwordField;
   Button createUsersButton;
   Button loginButton;
-
+Calculator Calculator;
 boolean[] keys = new boolean[1000000000];
 boolean typing = true;
 String typedLetters = "";
@@ -51,6 +51,7 @@ void setup() {
   loginPage = new LoginPage(this);
   clock = new Clock();
   calendar = new Calendar();
+  Calculator = new Calculator();
 }
 
 void draw() {
@@ -58,7 +59,6 @@ void draw() {
   background(loginWallpaper);
   ProfileDisplay();
   displayButtons();
-  Calc.caculuator();
 
   switch(state) {
   case "startup":
@@ -72,4 +72,6 @@ void draw() {
   case "Desktop":
     break;
   }
+  Calculator.calc1(100, 100);
+
 }
